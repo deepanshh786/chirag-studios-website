@@ -122,6 +122,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ---- Lightbox ----
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.portfolio-img img').forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    [lightbox, lightboxClose].forEach(el => {
+        el.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxClose) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
     // ---- Contact form ----
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
@@ -139,13 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     });
 
-    // ---- Parallax-lite on hero ----
-    const hero = document.querySelector('.hero-content');
+    // ---- Parallax-lite on hero background ----
+    const heroBgImage = document.querySelector('.hero-bg-image');
+    const heroContent = document.querySelector('.hero-content');
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
         if (scrolled < window.innerHeight) {
-            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.7;
+            heroBgImage.style.transform = `translateY(${scrolled * 0.4}px) scale(1.1)`;
+            heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
         }
     });
 
