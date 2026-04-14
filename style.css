@@ -32,6 +32,7 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -831,7 +832,8 @@ section {
 .contact-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
+    align-content: start;
 }
 
 .form-group {
@@ -848,10 +850,11 @@ section {
     width: 100%;
     background: var(--bg);
     border: 1px solid var(--border-light);
+    border-radius: 0;
     color: var(--text);
     font-family: var(--font-body);
     font-size: 0.9rem;
-    padding: 1.2rem 1rem 0.8rem;
+    padding: 1rem;
     transition: border-color 0.3s var(--ease);
     outline: none;
     -webkit-appearance: none;
@@ -864,37 +867,17 @@ section {
 }
 
 .form-group label {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    pointer-events: none;
-    transition: all 0.3s var(--ease);
+    margin-bottom: 0.5rem;
 }
 
-.form-group textarea ~ label {
-    top: 1.2rem;
-    transform: none;
-}
-
-.form-group input:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label,
-.form-group textarea:focus ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label {
-    top: 0.5rem;
-    transform: none;
-    font-size: 0.65rem;
-    color: var(--accent);
-}
-
-.form-group .label-static {
-    top: 0.5rem;
-    transform: none;
-    font-size: 0.65rem;
-    color: var(--accent);
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
 .form-group select {
@@ -905,6 +888,15 @@ section {
 .form-group select option {
     background: var(--bg);
     color: var(--text);
+}
+
+.form-group input[type="date"] {
+    color: var(--text-muted);
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
 }
 
 /* ============ FOOTER ============ */
@@ -1083,15 +1075,121 @@ section {
 }
 
 @media (max-width: 600px) {
-    section { padding: 5rem 0; }
+    section { padding: 4rem 0; }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr;
+    .container { padding: 0 1.25rem; }
+
+    .section-header { margin-bottom: 3rem; }
+
+    .section-title {
+        font-size: clamp(2rem, 8vw, 2.5rem);
     }
 
+    /* Hero mobile */
+    .hero-content { padding: 1rem; }
+
+    .hero-title span:first-child {
+        font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .hero-title span:last-child {
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-description br { display: none; }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
+    }
+
+    .hero-stats {
+        gap: 2rem;
+        margin-top: 2rem;
+        max-width: 100%;
+    }
+
+    .stat-number { font-size: 1.8rem; }
+
+    .hero-scroll { bottom: 1rem; }
+
+    /* About mobile */
+    .about-lead { font-size: 1.3rem; }
+
+    .image-frame { max-width: 250px; }
+
+    /* Portfolio mobile */
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .portfolio-filter {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.65rem;
+    }
+
+    .portfolio-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(10,10,10,0.8), transparent 50%);
+        padding: 1rem;
+    }
+
+    .portfolio-overlay h3 { font-size: 1rem; }
+    .portfolio-overlay p { font-size: 0.6rem; }
+
+    /* Services mobile */
+    .services-grid { max-width: 100%; }
+
+    .service-card { padding: 2rem 1.5rem; }
+
+    /* Contact mobile */
     .contact-form {
         grid-template-columns: 1fr;
     }
 
-    .hero-description br { display: none; }
+    .contact-lead { font-size: 1.2rem; }
+
+    /* Lightbox mobile */
+    .lightbox img {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+
+    .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-stats { gap: 1.5rem; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label { font-size: 0.55rem; }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
 }
