@@ -108,6 +108,7 @@ img {
     right: 0;
     z-index: 1000;
     padding: 1.5rem 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.6) 0%, transparent 100%);
     transition: all 0.4s var(--ease);
 }
 
@@ -150,7 +151,7 @@ img {
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: rgba(245, 240, 235, 0.7);
     transition: color 0.3s;
     position: relative;
 }
@@ -226,16 +227,16 @@ img {
 .hero-bg-image {
     position: absolute;
     inset: 0;
-    background: url('photos/chirag.studios_3479806648447682639.jpg') center 20%/cover no-repeat;
-    filter: brightness(0.25);
+    background: url('photos/chirag.studios_3479806648447682639.jpg') center 30%/cover no-repeat;
+    filter: brightness(0.4);
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 50% 40%, rgba(201, 169, 110, 0.06) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,0.95) 100%);
+        radial-gradient(ellipse at 50% 50%, rgba(10,10,10,0.3) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.85) 100%);
 }
 
 .hero-grain {
@@ -389,12 +390,12 @@ img {
     position: relative;
     display: flex;
     justify-content: center;
-    gap: 4rem;
-    margin-top: 4rem;
-    padding-top: 2rem;
+    gap: 3.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
     border-top: 1px solid var(--border);
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
 }
 
 .stat {
